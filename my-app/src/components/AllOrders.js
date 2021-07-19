@@ -42,7 +42,7 @@ class Orders extends React.Component {
   handleChange(event) {
 
     const { name, value } = event.target;
-    orders.filter((order) => order.number === value);
+    const orders = orders.filter((order) => order.number === value);
     this.setState({
       fields: {
         ...this.state.fields,
