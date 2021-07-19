@@ -27,11 +27,11 @@ class OrderDetails extends React.Component {
   }
 
   render() {
-    
+
 
     return (
         <div>
-        <OneOrder />
+        <OneOrder order={this.state.order}/>
         </div>
 
     );
