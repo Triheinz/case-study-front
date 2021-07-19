@@ -33,9 +33,8 @@ class OrderDetails extends React.Component {
     return (
       <div>
         <OneOrder />
-
         </div>
-      </div>
+      
     );
   }
 }
