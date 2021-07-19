@@ -35,15 +35,14 @@ class Orders extends React.Component {
     this.orderService
       .getOrder(this.state.search)
       .then((response) => {
-        //this.setState({ this.props.order: response.data });
+        this.setState({ this.props.order : response.data });
       })
       .catch((err) => console.error(err));
   }
   handleChange(event) {
-    //1, filtrar el array de orders y buscar por value, 2. set state de este nuevo array en el array orders orginal
 
     const { name, value } = event.target;
-    orders.filter((order) => order.client_name === value);
+    orders.filter((order) => order.number === value);
     this.setState({
       fields: {
         ...this.state.fields,
