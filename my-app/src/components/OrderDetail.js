@@ -27,14 +27,13 @@ class OrderDetails extends React.Component {
   }
 
   render() {
-    const { number, date, clientName, products, orderState, country } =
-      this.state.order;
+    
 
     return (
-      <div>
+        <div>
         <OneOrder />
         </div>
-      
+
     );
   }
 }

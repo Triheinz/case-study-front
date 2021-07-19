@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import OrderService from '../service/order.service';
 import OneOrder from './OneOrder';
 
@@ -7,8 +7,7 @@ class Orders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: [],
-      search: '',
+      orders: []
     };
   }
 
@@ -41,31 +40,12 @@ class Orders extends React.Component {
     });
   }
 
-  searchOrders(event) {
-    this.setState({ search: event.target.value });
-    this.orderService
-      .searchOrder(this.state.search)
-      .then((response) => {
-        this.setState({ orders: response.data });
-      })
-      .catch((err) => console.error(err));
-  }
-
   render() {
-    const search = this.state.search;
-    return (
-      <div>
 
-        <input
-          type="text"
-          className="form-control"
-          id="search-input"
-          name="search"
-          placeholder="Find a order..."
-          onChange={(e) => this.searchOrders(e)}
-        />
+    return (
+
         <div className="orderlist">{this.displayOrders()}</div>
-      </div>
+
     );
   }
 }
