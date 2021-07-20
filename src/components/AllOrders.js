@@ -29,20 +29,35 @@ class Orders extends React.Component {
   componentDidMount() {
     this.refreshState();
   }
+  resetSearch() {
+    this.refreshState();
+  }
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.fields);
-    this.orderService
-      .getOrder(this.state.search)
-      .then((response) => {
-        this.setState({ this.props.order : response.data });
-      })
-      .catch((err) => console.error(err));
+    const numberToSearch = Number(this.state.fields.search);
+    console.log(numberToSearch);
+    const filteredOrders = this.state.orders.filter(
+      (order) =>
+        order.number === numberToSearch ||
+        order.country
+          .toLowerCase()
+          .includes(this.state.fields.search.toLowerCase()) ||
+        order.orderState
+          .toLowerCase()
+          .includes(this.state.fields.search.toLowerCase())
+    );
+    console.log(filteredOrders);
+    this.setState({
+      orders: filteredOrders,
+      fields: {
+        search: '',
+      },
+    });
   }
   handleChange(event) {
-
     const { name, value } = event.target;
-    const orders = orders.filter((order) => order.number === value);
+
     this.setState({
       fields: {
         ...this.state.fields,
@@ -60,13 +75,12 @@ class Orders extends React.Component {
   }
 
   render() {
-    const { fields } = this.state;
     return (
       <div>
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <input
             type="text"
-            value={fields.search}
+            value={this.state.fields.search}
             onChange={(e) => this.handleChange(e)}
             name="search"
           />
@@ -74,6 +88,7 @@ class Orders extends React.Component {
             Buscar
           </button>
         </form>
+        <button onClick={()=>this.resetSearch()}>Reset Search</button>
         <div className="orderlist">{this.displayOrders()}</div>
       </div>
     );
