@@ -15,7 +15,7 @@ class OrderDetails extends React.Component {
   getDetails() {
     const orderId = this.props.match.params.id;
     this.orderService
-      .getOneBeer(orderId)
+      .getOrder(orderId)
       .then((response) => {
         this.setState({ order: response.data });
       })

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function OneOrder({ _id,number, date, clientName, products, orderState, country }) {
   return (
-    <div className="beerContainer">
+    <div className="OrderContainer">
       <Link to={`/orders/${_id}`} key={_id}>
         <table class="table">
           <thead>

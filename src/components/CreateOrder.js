@@ -53,62 +53,62 @@ class CreateOrder extends Component {
         </div>
 
         <div className="form-item">
-          <label htmlFor="password" />
+          <label htmlFor="date" />
           <input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={fields.password}
+            placeholder="date"
+            type="date"
+            name="date"
+            value={fields.date}
             onChange={(e) => this.handleChange(e)}
           />
         </div>
 
         <div className="form-item">
-          <label htmlFor="name" />
+          <label htmlFor="clientName" />
           <input
-            placeholder="Your name"
+            placeholder="client Name"
             type="text"
-            name="name"
-            value={fields.name}
+            name="clientName"
+            value={fields.clientName.name}
             onChange={(e) => this.handleChange(e)}
           />
         </div>
 
         <div className="form-item">
-          <label htmlFor="surname" />
+          <label htmlFor="products" />
           <input
-            placeholder="Your Surname"
+            placeholder="Products"
             type="text"
-            name="surname"
-            value={fields.surname}
+            name="products"
+            value={fields.products}
             onChange={(e) => this.handleChange(e)}
           />
         </div>
 
         <div className="form-item">
-          <label htmlFor="phone" />
+          <label htmlFor="orderState" />
           <input
-            placeholder="Phone number"
+            placeholder="Order State"
             type="number"
-            name="phone"
-            value={fields.phone}
+            name="orderState"
+            value={fields.orderState}
             onChange={(e) => this.handleChange(e)}
           />
         </div>
 
         <div className="form-item">
-          <label htmlFor="position" />
+          <label htmlFor="country" />
           <input
-            placeholder="Company position"
+            placeholder="Company country"
             type="text"
-            name="position"
-            value={fields.position}
+            name="country"
+            value={fields.country}
             onChange={(e) => this.handleChange(e)}
           />
         </div>
 
         <button type="submit" className="form-btn">
-          Create user
+          Create Order
         </button>
       </form>
     );
