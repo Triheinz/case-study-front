@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OrderService from '../service/order.service';
-import AllOrders from './AllOrders';
+
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -17,13 +17,36 @@ class CreateOrder extends Component {
       },
 
     };
+    this.orderService = new OrderService();
   }
+
 
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state.fields);
-    this.props.editOrder(this.state.fields);
-    this.props.history.push('/');
+
+    this.orderService
+      .createOrder(this.state.fields)
+      .then(() => {
+        console.log('Created');
+
+        this.setState(
+          {
+            fields: {
+              number: '',
+              date: '',
+              clientName: '',
+              products: '',
+              orderState: '',
+              country: '',
+            },
+          },
+          () => {
+            this.props.refreshState();
+          }
+        );
+      })
+      .catch((err) => console.error(err));
   }
 
   handleChange(event) {
@@ -40,7 +63,7 @@ class CreateOrder extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)} className="form">
+      <form onSubmit={(e) => this.handleSubmit(e)} class="form">
         <div className="form-item">
           <label htmlFor="number" />
           <input
@@ -89,7 +112,7 @@ class CreateOrder extends Component {
           <label htmlFor="orderState" />
           <input
             placeholder="Order State"
-            type="number"
+            type="text"
             name="orderState"
             value={fields.orderState}
             onChange={(e) => this.handleChange(e)}
@@ -107,9 +130,7 @@ class CreateOrder extends Component {
           />
         </div>
 
-        <button type="submit" className="form-btn">
-          Create Order
-        </button>
+        <button type="submit">Create Order</button>
       </form>
     );
   }

@@ -11,6 +11,6 @@ export default class OrderService {
 
   getAllOrders = () => this.instance.get('/');
   getOrder = (id) => this.instance.get(`/${id}`);
-  editOrder = (id, data) => this.instance.put(`/${id}`, data);
+  createOrder = (data) => this.instance.post(`/createOrder`, data);
   deleteOrder = (id) => this.instance.delete(`/${id}`);
 }

@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import OrderService from '../service/order.service';
 import OneOrder from './OneOrder';
 
-
-
 class Orders extends React.Component {
   constructor(props) {
     super(props);
@@ -88,7 +86,10 @@ class Orders extends React.Component {
             Buscar
           </button>
         </form>
-        <button onClick={()=>this.resetSearch()}>Reset Search</button>
+        <a href="/orders/createOrder" className="create-order">
+          Create New Order
+        </a>
+        <button onClick={() => this.resetSearch()}>Reset Search</button>
         <div className="orderlist">{this.displayOrders()}</div>
       </div>
     );
