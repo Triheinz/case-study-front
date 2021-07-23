@@ -11,7 +11,7 @@ order
   orderState,
   country} = order
   return (
-    <tr>
+    <tbody>
       <th scope="col">
         <Link to={`/orders/${_id}`} key={_id}>
           {number}
@@ -20,16 +20,16 @@ order
       <th scope="col">{date}</th>
       <th scope="col">{clientName}</th>
       <tr>
-        <th scope="col">{this.clientName.id}</th>
-        <th scope="col">{this.clientName.name}</th>
-        <th scope="col">{this.clientName.lastName}</th>
-        <th scope="col">{this.clientName.address}</th>
-        <th scope="col">{this.clientName.country}</th>
+        <td>{clientName.id}</td>
+        <td>{clientName.name}</td>
+        <td>{clientName.lastName}</td>
+        <td>{clientName.address}</td>3
+        <td>{clientName.country}</td>
       </tr>
       <th scope="col">{products}</th>
       <th scope="col">{orderState}</th>
       <th scope="col">{country}</th>
-    </tr>
+    </tbody>
   );
 }
 export default OneOrder;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import OrderService from '../service/order.service';
 import OrderDetail from './OrderDetail';
 
@@ -88,11 +88,11 @@ class AllOrders extends React.Component {
               <th scope="col">Country</th>
             </tr>
           </thead>
-          <tbody>
+
             {orders.map((order) => (
               <OrderDetail key={order._id} {...order} />
             ))}
-          </tbody>
+
         </table>
       </div>
     );
