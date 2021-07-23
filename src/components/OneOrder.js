@@ -6,7 +6,7 @@ function OneOrder({ _id,number, date, clientName, products, orderState, country 
   return (
     <div className="OrderContainer">
       <Link to={`/orders/${_id}`} key={_id}>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">#</th>

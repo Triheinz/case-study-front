@@ -63,7 +63,7 @@ class CreateOrder extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)} class="form">
+      <form onSubmit={(e) => this.handleSubmit(e)} className="form">
         <div className="form-item">
           <label htmlFor="number" />
           <input

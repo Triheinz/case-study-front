@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import OrderService from '../service/order.service';
-import OneOrder from './OneOrder';
+import OrderDetail from './OrderDetail';
 
 class Orders extends React.Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class Orders extends React.Component {
     const { orders } = this.state;
     console.log(orders);
     return orders.map((order) => {
-      return <OneOrder key={order._id} {...order} />;
+      return <OrderDetail key={order._id} {...order} />;
     });
   }
 
