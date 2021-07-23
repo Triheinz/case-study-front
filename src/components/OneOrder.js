@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function OneOrder({
 order
 }) {
-  const { _id,
+  const { id,
   number,
   date,
   clientName,
@@ -15,7 +15,7 @@ order
   return (
     <tbody>
       <th scope="col">
-        <Link to={`/orders/${_id}`} key={_id}>
+        <Link to={`/orders/${id}`} key={id}>
           {number}
         </Link>
       </th>

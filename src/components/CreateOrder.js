@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import OrderService from '../service/order.service';
 
-
 class CreateOrder extends Component {
   constructor(props) {
     super(props);
@@ -21,13 +20,12 @@ class CreateOrder extends Component {
     this.orderService = new OrderService();
   }
 
-
   handleSubmit(event) {
     event.preventDefault();
     this.orderService
       .createOrder(this.state.fields)
       .then(() => {
-        this.props.history.push("/orders")
+        this.props.history.push('/orders');
       })
       .catch((err) => console.error(err));
   }
@@ -39,7 +37,6 @@ class CreateOrder extends Component {
         ...this.state.fields,
         [name]: value,
       },
-
     });
   }
 
@@ -92,7 +89,6 @@ class CreateOrder extends Component {
             value={fields.clientAddress}
             onChange={(e) => this.handleChange(e)}
           />
-
         </div>
 
         <div className="form-item">

@@ -46,7 +46,7 @@ class AllOrders extends React.Component {
           .toLowerCase()
           .includes(this.state.fields.search.toLowerCase())
       });
-    
+
     this.setState({
       orders: filteredOrders,
       fields: {
