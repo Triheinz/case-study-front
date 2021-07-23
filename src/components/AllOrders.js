@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import OrderService from '../service/order.service';
 import OrderDetail from './OrderDetail';
 
-class Orders extends React.Component {
+class AllOrders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class Orders extends React.Component {
     this.orderService
       .getAllOrders()
       .then((orders) => {
-        console.log(orders);
+
         this.setState({ orders: orders.data });
       })
       .catch((err) => console.error(err));
@@ -36,15 +36,16 @@ class Orders extends React.Component {
     const numberToSearch = Number(this.state.fields.search);
     console.log(numberToSearch);
     const filteredOrders = this.state.orders.filter(
-      (order) =>
-        order.number === numberToSearch ||
+      (order) => {
+      console.log(order);
+        return order.number === numberToSearch ||
         order.country
           .toLowerCase()
           .includes(this.state.fields.search.toLowerCase()) ||
         order.orderState
           .toLowerCase()
           .includes(this.state.fields.search.toLowerCase())
-    );
+      });
     console.log(filteredOrders);
     this.setState({
       orders: filteredOrders,
@@ -66,10 +67,35 @@ class Orders extends React.Component {
 
   displayOrders() {
     const { orders } = this.state;
-    console.log(orders);
-    return orders.map((order) => {
-      return <OrderDetail key={order._id} {...order} />;
-    });
+    return (
+      <div className="OrderContainer">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date</th>
+              <th scope="col">Client Name</th>
+              <tr>
+                <th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Country</th>
+                </th>
+              </tr>
+              <th scope="col">Products</th>
+              <th scope="col">Order State</th>
+              <th scope="col">Country</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <OrderDetail key={order._id} {...order} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 
   render() {
@@ -96,4 +122,4 @@ class Orders extends React.Component {
   }
 }
 
-export default Orders;
+export default AllOrders;

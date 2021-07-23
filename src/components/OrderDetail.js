@@ -2,7 +2,6 @@ import React from 'react';
 import OrderService from '../service/order.service';
 import OneOrder from './OneOrder';
 
-
 class OrderDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -13,28 +12,24 @@ class OrderDetails extends React.Component {
   }
 
   getDetails() {
-    const orderId = this.props.match.params.id;
+    const orderId = this.props.id;
+
     this.orderService
       .getOrder(orderId)
       .then((response) => {
+        
         this.setState({ order: response.data });
       })
       .catch((err) => console.error(err));
   }
 
   componentDidMount() {
+
     this.getDetails();
   }
 
   render() {
-
-
-    return (
-        <div>
-        <OneOrder order={this.state.order}/>
-        </div>
-
-    );
+    return <OneOrder order={this.state.order} />;
   }
 }
 

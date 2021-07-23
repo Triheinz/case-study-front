@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class OrderService {
   constructor() {
-    console.log();
+    
     this.instance = axios.create({
       baseURL: "http://localhost:5000/api/orders",
       withCredentials: true,

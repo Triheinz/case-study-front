@@ -23,12 +23,12 @@ class CreateOrder extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.fields);
+
 
     this.orderService
       .createOrder(this.state.fields)
       .then(() => {
-        console.log('Created');
+        
 
         this.setState(
           {
