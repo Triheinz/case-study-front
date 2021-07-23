@@ -7,6 +7,8 @@ order
   number,
   date,
   clientName,
+  clientLastName,
+  clientAddress,
   products,
   orderState,
   country} = order
@@ -19,13 +21,8 @@ order
       </th>
       <th scope="col">{date}</th>
       <th scope="col">{clientName}</th>
-      <tr>
-        <td>{clientName.id}</td>
-        <td>{clientName.name}</td>
-        <td>{clientName.lastName}</td>
-        <td>{clientName.address}</td>3
-        <td>{clientName.country}</td>
-      </tr>
+      <th scope="col">{clientLastName}</th>
+      <th scope="col">{clientAddress}</th>
       <th scope="col">{products}</th>
       <th scope="col">{orderState}</th>
       <th scope="col">{country}</th>

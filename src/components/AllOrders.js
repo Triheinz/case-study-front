@@ -32,12 +32,12 @@ class AllOrders extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.fields);
+
     const numberToSearch = Number(this.state.fields.search);
-    console.log(numberToSearch);
+
     const filteredOrders = this.state.orders.filter(
       (order) => {
-      console.log(order);
+
         return order.number === numberToSearch ||
         order.country
           .toLowerCase()
@@ -46,7 +46,7 @@ class AllOrders extends React.Component {
           .toLowerCase()
           .includes(this.state.fields.search.toLowerCase())
       });
-    console.log(filteredOrders);
+    
     this.setState({
       orders: filteredOrders,
       fields: {
@@ -75,24 +75,17 @@ class AllOrders extends React.Component {
               <th scope="col">#</th>
               <th scope="col">Date</th>
               <th scope="col">Client Name</th>
-              <tr>
-                <th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Country</th>
-                </th>
-              </tr>
+              <th scope="col">Client Last Name</th>
+              <th scope="col">Client Address</th>
               <th scope="col">Products</th>
               <th scope="col">Order State</th>
               <th scope="col">Country</th>
             </tr>
           </thead>
 
-            {orders.map((order) => (
-              <OrderDetail key={order._id} {...order} />
-            ))}
-
+          {orders.map((order) => (
+            <OrderDetail key={order._id} {...order} />
+          ))}
         </table>
       </div>
     );

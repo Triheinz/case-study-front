@@ -7,15 +7,15 @@ class CreateOrder extends Component {
     super(props);
     this.state = {
       fields: {
-        id: '',
         number: '',
         date: '',
         clientName: '',
+        clientLastName: '',
+        clientAddress: '',
         products: '',
         orderState: '',
         country: '',
       },
-
     };
     this.orderService = new OrderService();
   }
@@ -23,19 +23,17 @@ class CreateOrder extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-
     this.orderService
       .createOrder(this.state.fields)
       .then(() => {
-        
-
         this.setState(
           {
             fields: {
               number: '',
               date: '',
               clientName: '',
+              clientLastName: '',
+              clientAddress: '',
               products: '',
               orderState: '',
               country: '',
@@ -92,9 +90,24 @@ class CreateOrder extends Component {
             placeholder="client Name"
             type="text"
             name="clientName"
-            value={fields.clientName.name}
+            value={fields.clientName}
             onChange={(e) => this.handleChange(e)}
           />
+          <input
+            placeholder="client Last name"
+            type="text"
+            name="clientLastName"
+            value={fields.clientLastName}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <input
+            placeholder="client Address"
+            type="text"
+            name="clientAddress"
+            value={fields.clientAddress}
+            onChange={(e) => this.handleChange(e)}
+          />
+
         </div>
 
         <div className="form-item">
