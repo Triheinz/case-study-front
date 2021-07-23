@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import OrderService from '../service/order.service';
 
 
@@ -26,23 +27,7 @@ class CreateOrder extends Component {
     this.orderService
       .createOrder(this.state.fields)
       .then(() => {
-        this.setState(
-          {
-            fields: {
-              number: '',
-              date: '',
-              clientName: '',
-              clientLastName: '',
-              clientAddress: '',
-              products: '',
-              orderState: '',
-              country: '',
-            },
-          },
-          () => {
-            this.props.refreshState();
-          }
-        );
+        this.props.history.push("/orders")
       })
       .catch((err) => console.error(err));
   }
@@ -149,4 +134,4 @@ class CreateOrder extends Component {
   }
 }
 
-export default CreateOrder;
+export default withRouter(CreateOrder);
